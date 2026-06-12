@@ -1,4 +1,4 @@
-#Resolución de sudokus con SA
+# Resolución de sudokus con SA
 
 El sudoku es un juego de lógica que consiste en llenar una cuadrícula de 9x9 con números del 1 al 9, de tal manera que cada fila, cada columna y cada una de las nueve subcuadrículas de 3x3 contengan todos los números del 1 al 9 sin repetirse.
 
