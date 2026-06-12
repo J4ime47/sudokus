@@ -4,7 +4,7 @@ El sudoku es un juego de lógica que consiste en llenar una cuadrícula de 9x9 c
 
 Para este problema, utilizaremos como guion los puntos proporcionados por Alfonso Tarancón en el tema de Simulated Annealing de sus apuntes. Comenzamos con la construcción del modelo (Sección 13.2.1, página 223).
 
-**1. Espacio de configuración:** Para este problema, será el espacio generado por todas las matrices cuadradas de dimensión NxN, (9x9 normalmente), si no tenemos en cuenta los números fijos en el problema. Con esto, podemos ver que tenemos$$\scriptsize{9^{N \times N}}$$configuraciones distintas, que sería un número del orden de$$\scriptsize{10^{77}}$$.
+**1. Espacio de configuración:** Para este problema, será el espacio generado por todas las matrices cuadradas de dimensión NxN, (9x9 normalmente), si no tenemos en cuenta los números fijos en el problema. Con esto, podemos ver que tenemos $$\scriptsize{9^{N \times N}}$$ configuraciones distintas, que sería un número del orden de $$\scriptsize{10^{77}}$$.
 
 **2. Configuración inicial:** Por lo general, pondremos que todas las componentes de la matriz sean 1 (menos los fijos, que serán los que tengan que ser).
 
