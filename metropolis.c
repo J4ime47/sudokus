@@ -14,8 +14,11 @@ void initialize_sudoku(Sudoku *sudoku){
 
 // Changes a random value of the sudoku
 void change (Sudoku initial_sudoku, Sudoku *final_sudoku){
-    int idx, idy,i;
+    int idx, idy, i;
 
+    copy_sudoku(&initial_sudoku, final_sudoku);
+    
+    i = 0;
     do{
         idx=rand_int_19()-1;
         idy=rand_int_19()-1;
@@ -30,7 +33,7 @@ void change (Sudoku initial_sudoku, Sudoku *final_sudoku){
 
 void metropolis_step (System *system, Sudoku candidate, double beta){
     int E_cand=energy(candidate);
-    double C= exp(beta*(E_cand-system->energy));
+    double C= exp(-beta*(E_cand-system->energy));
     double omega = fran();
     if(omega<C){
         system->energy=E_cand;
