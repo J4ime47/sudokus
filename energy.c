@@ -51,7 +51,7 @@ int rep_num_box(Sudoku sudoku, int box_row, int box_col){
     box_start_row = box_row * 3;
     box_start_col = box_col * 3;
 
-    // Contar cuántas veces aparece cada número 1-9 en el box
+    // Contar cuántas veces aparece cada número 1-9 en la subcaja
     for(i = box_start_row; i < box_start_row + 3; i++){
         for(j = box_start_col; j < box_start_col + 3; j++){
             if(sudoku.mat[i][j].val >= 1 && sudoku.mat[i][j].val <= dim){
