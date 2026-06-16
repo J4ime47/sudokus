@@ -13,7 +13,7 @@ int main(){
     //Inicializamos el sistema
     system.beta_initial=0.001;
     system.termalization_steps=100000;
-    system.beta_step=0.1;
+    system.beta_step=0.01;
     
     //Inicializamos el sudoku (Uso uno de ejemplo de internet)
     int pregunta[9][9] = {
@@ -59,8 +59,9 @@ int main(){
             change(system.sudoku,&candidate);
             metropolis_step(&system,candidate,beta);
             total_steps++;
+            if(system.energy==0) break;
         }
-        printf("beta=%.5f, energia=%d\n", beta, system.energy);
+        printf("beta=%.3f,\t energia=%d\n", beta, system.energy);
         beta+=system.beta_step;
         
     }
