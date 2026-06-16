@@ -25,7 +25,6 @@ typedef struct {
     int energy;
     Sudoku sudoku;
     double beta_initial;
-    double beta_final;
     int termalization_steps;
     double beta_step;    
 } System;
