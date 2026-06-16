@@ -40,53 +40,19 @@ int rep_num_filcol(Sudoku sudoku, int filcol){
     return sum;
 }
 
-// Calculamos duplicados en cada subcaja 3x3
-int rep_num_box(Sudoku sudoku, int box_row, int box_col){
-    int frec[dim];
-    int i, j, sum, box_start_row, box_start_col;
 
-    sum = 0;
-    for(i=0; i<dim; i++) frec[i] = 0;
-
-    box_start_row = box_row * 3;
-    box_start_col = box_col * 3;
-
-    // Contar cuántas veces aparece cada número 1-9 en la subcaja
-    for(i = box_start_row; i < box_start_row + 3; i++){
-        for(j = box_start_col; j < box_start_col + 3; j++){
-            if(sudoku.mat[i][j].val >= 1 && sudoku.mat[i][j].val <= dim){
-                frec[sudoku.mat[i][j].val - 1]++;
-            }
-        }
-    }
-
-    // Contar duplicados (frecuencia > 1)
-    for(i = 0; i < dim; i++){
-        if(frec[i] > 1){
-            sum += frec[i] - 1;
-        }
-    }
-
-    return sum;
-}
-
-// Calculamos la energía de una configuración, la cual definimos por el número de números repetidos en fila, 
-// columna y subcaja
+// Calculamos la energía de una configuración, la cual definimos 
+// por el número de números repetidos en fila columna
 int energy(Sudoku sudoku){
-    int i, j, total_energy;
+    int i, total_energy;
     total_energy = 0;
 
-    // Contar duplicados en filas y columnas
+    // Contar duplicados en filas y columnas (No hay que contar en las subcajas ya que siempre cumplen)
     for(i=0; i<dim; i++){
         total_energy += rep_num_filcol(sudoku, i);
     }
 
-    // Contar duplicados en las subcajas 3x3
-    for(i=0; i<3; i++){
-        for(j=0; j<3; j++){
-            total_energy += rep_num_box(sudoku, i, j);
-        }
-    }
+
 
     return total_energy;
 }
