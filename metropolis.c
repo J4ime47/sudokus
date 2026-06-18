@@ -62,13 +62,14 @@ void change (Sudoku initial_sudoku, Sudoku *final_sudoku){
     
 }
 
-void metropolis_step (System *system, Sudoku candidate, double beta){
+void metropolis_step (System *system, Sudoku candidate, double beta,int *admitidos){
     int E_cand=energy(candidate);
     double C= exp(-beta*(E_cand-system->energy));
     double omega = fran();
     if(omega<C){
         system->energy=E_cand;
         copy_sudoku(candidate,&system->sudoku);
+        (*admitidos)++;
     }
 }
 

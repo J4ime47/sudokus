@@ -50,4 +50,4 @@ extern bool in_array (int *v,int N, int num);
 //Subalgoritmos de metropolis.c
 extern void change (Sudoku initial_sudoku, Sudoku *final_sudoku);
 extern void initialize_sudoku(Sudoku *sudoku);
-extern void metropolis_step (System *system, Sudoku candidate,double beta);
+extern void metropolis_step (System *system, Sudoku candidate, double beta,int *admitidos);
