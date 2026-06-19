@@ -20,10 +20,51 @@ void print_sudoku(Sudoku sudoku){
         }
         for(j=0;j<dim;j++){
             if(j%3==0){
-                printf("| %d ", sudoku.mat[i][j].val);
+                if(!sudoku.mat[i][j].fixed_num){
+                    printf("| %d ", sudoku.mat[i][j].val);
+                }
+                else{
+                    printf("| " ANSI_BLUE "%d " ANSI_RESET, sudoku.mat[i][j].val);
+
+                }
             }
             else{
-                printf("%d ", sudoku.mat[i][j].val);
+                if(!sudoku.mat[i][j].fixed_num){
+                    printf("%d ", sudoku.mat[i][j].val);
+                }
+                else{
+                    printf(ANSI_BLUE "%d " ANSI_RESET, sudoku.mat[i][j].val);
+                }
+            }
+        }
+        printf("\n");
+    }
+}
+
+
+void print_solution(Sudoku sudoku){
+    int i,j;
+    for(i=0;i<dim;i++){
+        if(i%3==0){
+            printf("------------------------\n");
+        }
+        for(j=0;j<dim;j++){
+            if(j%3==0){
+                if(!sudoku.mat[i][j].fixed_num){
+                    printf("| "ANSI_GREEN"%d "ANSI_RESET, sudoku.mat[i][j].val);
+                }
+                else{
+                    printf("| " ANSI_BLUE "%d " ANSI_RESET, sudoku.mat[i][j].val);
+
+                }
+            }
+            else{
+                if(!sudoku.mat[i][j].fixed_num){
+                    printf(ANSI_GREEN"%d " ANSI_RESET, sudoku.mat[i][j].val);
+                }
+                else{
+                    printf(ANSI_BLUE "%d " ANSI_RESET, sudoku.mat[i][j].val);
+                }
             }
         }
         printf("\n");
