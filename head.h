@@ -6,7 +6,7 @@
 
 //Definimos constantes
 #define dim 9
-#define N_ITER 100000
+#define N_ITER 1000000
 
 //Definimos colores
 #define ANSI_RED     "\x1b[31m"
@@ -50,7 +50,7 @@ extern int energy(Sudoku sudoku);
 // Subalgoritmos de matrix.c
 extern void copy_sudoku(Sudoku inicial, Sudoku *final);
 extern void print_sudoku(Sudoku sudoku);
-extern void set_fixed(Sudoku *sudoku);
+extern void set_fixed(Sudoku *sudoku,int *num_unfixed);
 extern void show_fixed(int ibox, int jbox, int *arr, Sudoku *sudoku,int *nums);
 extern bool in_array (int *v,int N, int num);
 extern void print_solution(Sudoku sudoku);

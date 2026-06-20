@@ -73,8 +73,9 @@ void print_solution(Sudoku sudoku){
 
 //Marca que componentes de la matriz son fijos, poniendo que los huecos siempre seran 0 
 //inicialmente. 
-void set_fixed(Sudoku *sudoku){
+void set_fixed(Sudoku *sudoku,int *num_unfixed){
     int i,j;
+    *num_unfixed=0;
     for(i=0;i<dim;i++){
         for(j=0;j<dim;j++){
             if(sudoku->mat[i][j].val!=0){
@@ -82,6 +83,7 @@ void set_fixed(Sudoku *sudoku){
             }
             else{
                 sudoku->mat[i][j].fixed_num=false;
+                (*num_unfixed)++;
             }
         }
     }
@@ -107,8 +109,8 @@ void show_fixed(int ibox, int jbox, int *arr, Sudoku *sudoku,int *nums){
     for(i=bsr;i<bsr+3;i++){
         for(j=bsc;j<bsc+3;j++){
             if(sudoku->mat[i][j].fixed_num){
-                arr[*nums]=sudoku->mat[i][j].val;
-                (*nums)++; //Ojo a la sutileza que diría Tarancón
+                arr[(*nums)++]=sudoku->mat[i][j].val;
+                //Ojo a la sutileza que diría Tarancón
             }
         }
     }
