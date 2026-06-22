@@ -8,7 +8,7 @@ Para este problema, utilizaremos como guion los puntos proporcionados por Alfons
 
 **2. Configuración inicial:** Conociendo los números fijos, rellenaremos cada subcaja por el resto de números que faltarían en orden creciente, de tal forma que la regla de las subcajas se cumplirá desde el principio.
 
-**3- Definición de la Energía:** Para este problema, utilizaremos como energía al número de números repetidos por fila y columna, de tal forma que dicha función tiene un mínimo, que es nulo y único, y que además está justo con la configuración solución.
+**3- Definición de la Energía:** Para este problema, utilizaremos como energía al número de números repetidos por fila y columna, de tal forma que dicha función tiene un mínimo, que es además nulo, y que además está justo con la configuración solución.
 
 **4- Función de Partición:** Ni idea, física estadística es una asignatura del segundo cuatri de tercero y estoy haciendo esto en junio, por lo que podemos decir que es un problema para el yo futuro.
 
