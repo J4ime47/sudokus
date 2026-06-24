@@ -6,12 +6,12 @@ Para este problema, utilizaremos como guion los puntos proporcionados por Alfons
 
 **1. Espacio de configuración:** Para este problema, será el espacio generado por todas las matrices cuadradas de dimensión $$N\times N$$, (9x9 normalmente), si no tenemos en cuenta los números fijos en el problema. Con esto, podemos ver que tenemos $$9^{N \times N}$$ configuraciones distintas, que sería un número del orden de $$10^{77}$$.
 
-**2. Configuración inicial:** Por lo general, pondremos que todas las componentes de la matriz sean 1 (menos los fijos, que serán los que tengan que ser).
+**2. Configuración inicial:** Conociendo los números fijos, rellenaremos cada subcaja por el resto de números que faltarían en orden creciente, de tal forma que la regla de las subcajas se cumplirá desde el principio.
 
-**3- Definición de la Energía:** Para este problema, utilizaremos como energía al número de números repetidos por fila y columna, de tal forma que dicha función tiene un mínimo, que es nulo y único, y que además está justo con la configuración solución.
+**3- Definición de la Energía:** Para este problema, utilizaremos como energía al número de números repetidos por fila y columna, de tal forma que dicha función tiene un mínimo, que es además nulo, y que además está justo con la configuración solución.
 
 **4- Función de Partición:** Ni idea, física estadística es una asignatura del segundo cuatri de tercero y estoy haciendo esto en junio, por lo que podemos decir que es un problema para el yo futuro.
 
-**5- Cambios tentativos:** Para cada paso, cambiaremos una componente random de la matriz (si no es un número fijo) por un número random plano entre 1 y 9.
+**5- Cambios tentativos:** Para cada paso, elegiremos una subcaja 3x3 del sudoku y de ahí, dos números no fijos serán intercambiados.
 
 
