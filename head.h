@@ -6,7 +6,7 @@
 
 //Definimos constantes
 #define dim 9
-#define N_ITER 1000000
+#define N_ITER 10000000
 
 //Definimos colores
 #define ANSI_RED     "\x1b[31m"
