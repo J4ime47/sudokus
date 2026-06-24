@@ -5,7 +5,7 @@
 int main(){
     System systema;
     Sudoku candidate;
-    int i,j,admitidos,total_steps,num_unfixed,icords[2],jcords[2],delta_En;
+    int i,j,admitidos,total_steps,num_unfixed,icords[2],jcords[2],delta_En,repetidos,prev_energy;
     double beta,ttot,admitancia;
     clock_t inicio,final,timeo;
     //FILE *f =fopen("results/medio.txt","w");
@@ -19,16 +19,16 @@ int main(){
 
     //Inicializamos el sudoku (Uso uno de ejemplo de internet)
     int pregunta[9][9] = {
-    {0,0,0,0,5,0,3,0,0},
-    {7,0,0,2,4,0,0,0,0},
-    {0,0,0,0,3,0,6,0,2},
-    {5,0,2,3,9,0,0,6,0},
-    {0,3,6,8,7,0,5,0,0},
-    {0,0,0,0,6,0,7,0,4},
-    {0,0,7,4,0,0,0,5,3},
-    {0,0,8,0,0,5,4,1,6},
-    {2,0,0,0,0,0,8,0,7}
-};
+        {0,2,0,7,0,0,0,0,0},
+        {0,0,0,0,0,1,3,0,0},
+        {0,0,0,0,8,0,2,0,1},
+        {0,1,0,0,5,8,9,0,3},
+        {0,5,0,0,9,0,0,0,0},
+        {4,0,0,0,0,0,0,0,0},
+        {0,0,8,0,1,0,0,0,9},
+        {0,0,0,9,3,2,0,5,0},
+        {7,0,0,0,0,0,0,0,0}
+    };
 
     //Copiamos la matriz de la pregunta en el sudoku
     for(i=0;i<dim;i++){
@@ -41,8 +41,8 @@ int main(){
 
     //Inicializamos el sistema
     systema.beta_initial=0.01;
-    systema.termalization_steps=100;
-    systema.beta_step=0.1;
+    systema.termalization_steps=5000;
+    systema.beta_step=0.01;
 
 
     printf("--SUDOKU INICIAL--\n");
@@ -60,6 +60,8 @@ int main(){
     wait();
     //Contador de iteraciones exactas
     total_steps = 0;
+    repetidos = 0;
+    prev_energy = systema.energy;
 
     beta=systema.beta_initial;
 
@@ -77,7 +79,27 @@ int main(){
             if(systema.energy==0) break;
         }
         admitancia=admitidos/((double)systema.termalization_steps)*100.0;
-        printf("%i\n",systema.energy);
+
+        //Añadimos esto para cuando se queda estancado
+        if(systema.energy == prev_energy){
+            repetidos++;
+        }
+        else{
+            prev_energy = systema.energy;
+            repetidos = 0;
+        }
+
+        if(repetidos >= 20){
+            printf("Energia estancada en %d, reiniciando...\n", systema.energy);
+            initialize_sudoku(&systema.sudoku);
+            copy_sudoku(systema.sudoku,&candidate);
+            systema.energy=energy(systema.sudoku);
+            prev_energy = systema.energy;
+            repetidos = 0;
+            beta = systema.beta_initial;
+        }
+
+        printf("Energia=%i , Admitancia=%.1f%%\n",systema.energy,admitancia);
         
         
         beta+=systema.beta_step;   
