@@ -38,8 +38,8 @@ void initialize_sudoku(Sudoku *sudoku){
 }
 
 // Swaps two random numbes in a random subbox
-void change (Sudoku initial_sudoku, Sudoku *final_sudoku){
-    int ibox, jbox, i[2],j[2],a;
+void change (Sudoku initial_sudoku, Sudoku *final_sudoku, int *icords, int *jcords){
+    int ibox, jbox,a;
     //We copy the initial sudoku into the candidate and then we swap components
 
     copy_sudoku(initial_sudoku, final_sudoku);
@@ -48,26 +48,25 @@ void change (Sudoku initial_sudoku, Sudoku *final_sudoku){
         ibox=uniform_int(0,3);
         jbox=uniform_int(0,3);
         for(a=0;a<2;a++){
-            i[a]=3*ibox+uniform_int(0,3);
-            j[a]=3*jbox+uniform_int(0,3);
+            icords[a]=3*ibox+uniform_int(0,3);
+            jcords[a]=3*jbox+uniform_int(0,3);
         }
     }
     // Queremos que busque mientras alguna de las componentes esté fija
-    while(final_sudoku->mat[i[0]][j[0]].fixed_num || final_sudoku->mat[i[1]][j[1]].fixed_num);
+    while(final_sudoku->mat[icords[0]][jcords[0]].fixed_num || final_sudoku->mat[icords[1]][jcords[1]].fixed_num);
     
-    final_sudoku->mat[i[0]][j[0]].val=initial_sudoku.mat[i[1]][j[1]].val;
-    final_sudoku->mat[i[1]][j[1]].val=initial_sudoku.mat[i[0]][j[0]].val;
+    final_sudoku->mat[icords[0]][jcords[0]].val=initial_sudoku.mat[icords[1]][jcords[1]].val;
+    final_sudoku->mat[icords[1]][jcords[1]].val=initial_sudoku.mat[icords[0]][jcords[0]].val;
     
     
     
 }
 
-void metropolis_step (System *system, Sudoku candidate, double beta,int *admitidos){
-    int E_cand=energy(candidate);
-    double C= exp(-beta*(E_cand-system->energy));
+void metropolis_step (System *system,Sudoku candidate , double beta, int *admitidos, int deltaE){
+    double C= exp(-beta*(deltaE));
     double omega = fran();
     if(omega<C){
-        system->energy=E_cand;
+        system->energy+=deltaE;
         copy_sudoku(candidate,&system->sudoku);
         (*admitidos)++;
     }

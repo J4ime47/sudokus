@@ -43,8 +43,10 @@ extern double fran();
 extern int uniform_int(int a, int b);
 
 // Sublagoritmos de energy.c
-extern int rep_num_filcol(Sudoku sudoku, int filcol);
+extern int rep_num_fil(Sudoku sudoku, int fil);
+extern int rep_num_col(Sudoku sudoku, int col);
 extern int energy(Sudoku sudoku);
+extern int delta_E(Sudoku sudoku,Sudoku candidate, int *icords, int *jcords);
 
 
 // Subalgoritmos de matrix.c
@@ -56,9 +58,9 @@ extern bool in_array (int *v,int N, int num);
 extern void print_solution(Sudoku sudoku);
 
 //Subalgoritmos de metropolis.c
-extern void change (Sudoku initial_sudoku, Sudoku *final_sudoku);
+extern void change (Sudoku initial_sudoku, Sudoku *final_sudoku, int *icords, int *jcords);
 extern void initialize_sudoku(Sudoku *sudoku);
-extern void metropolis_step (System *system, Sudoku candidate, double beta,int *admitidos);
+extern void metropolis_step (System *system,Sudoku candidate, double beta, int *admitidos, int deltaE);
 
 //Subalgoritmos de utils.c
 extern void wait();

@@ -5,7 +5,7 @@
 int main(){
     System systema;
     Sudoku candidate;
-    int i,j,admitidos,total_steps,num_unfixed;
+    int i,j,admitidos,total_steps,num_unfixed,icords[2],jcords[2],delta_En;
     double beta,ttot,admitancia;
     clock_t inicio,final,timeo;
     //FILE *f =fopen("results/medio.txt","w");
@@ -70,8 +70,9 @@ int main(){
         admitidos=0;
         //fprintf(f,"%.2f %i %.2f\n", beta, systema.energy,admitancia);
         for(i=0;i<systema.termalization_steps;i++){
-            change(systema.sudoku,&candidate);
-            metropolis_step(&systema,candidate,beta,&admitidos);
+            change(systema.sudoku,&candidate,icords,jcords);
+            delta_En=delta_E(systema.sudoku,candidate,icords,jcords);
+            metropolis_step(&systema,candidate,beta,&admitidos,delta_En);
             total_steps++;
             if(systema.energy==0) break;
         }
