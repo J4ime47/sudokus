@@ -12,7 +12,7 @@ void initialize_sudoku(Sudoku *sudoku){
     //For each subbox
     for(ibox=0;ibox<3;ibox++){
         for(jbox=0;jbox<3;jbox++){
-            show_fixed(ibox,jbox,arr,sudoku,&N); 
+            show_fixed(ibox,jbox,sudoku,&N); 
             bsr=3*ibox; //Box-starting-row
             bsc=3*jbox; //Same for colum
             num_to_add=1;

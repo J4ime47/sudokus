@@ -41,7 +41,7 @@ int main(){
 
     //Inicializamos el sistema
     systema.beta_initial=0.01;
-    systema.termalization_steps=100;
+    systema.termalization_steps=20;
     systema.beta_step=0.01;
 
 

@@ -92,7 +92,7 @@ void set_fixed(Sudoku *sudoku,int *num_unfixed){
 // Dada una subcaja 3x3 del sudoku, encuentra que numeros están fijos y el número de estos
 // Notese que arr es un array de dimesion #dim 9.
 // Esto lo hacemos solo una vez al principio
-void show_fixed(int ibox, int jbox, int *arr, Sudoku *sudoku,int *nums){
+void show_fixed(int ibox, int jbox, Sudoku *sudoku,int *nums){
     int i,j;
     int bsc, bsr;
 

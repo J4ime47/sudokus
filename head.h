@@ -53,7 +53,7 @@ extern int delta_E(Sudoku sudoku,Sudoku candidate, int *icords, int *jcords);
 extern void copy_sudoku(Sudoku inicial, Sudoku *final);
 extern void print_sudoku(Sudoku sudoku);
 extern void set_fixed(Sudoku *sudoku,int *num_unfixed);
-extern void show_fixed(int ibox, int jbox, int *arr, Sudoku *sudoku,int *nums);
+extern void show_fixed(int ibox, int jbox, Sudoku *sudoku,int *nums);
 extern bool in_array (int *v,int N, int num);
 extern void print_solution(Sudoku sudoku);
 
